@@ -1,1 +1,28 @@
-<p>cart works!</p>
+<div class="container pt-2" *ngIf="cart.length;else noitem">
+    <div class="row align-items-center">
+    </div>
+    <div class="row">
+        <app-card-products class="col-xl-3 col-sm-6" *ngFor="let product of cart" [dataCard]="product"
+            (onRemoveCard)="deleteProductinShoppingCart($event)">
+        </app-card-products>
+    </div>
+    <div class="row g-0 align-items-center pb-4">
+        <div class="col-sm-6">
+        </div>
+        <div class="col-sm-6">
+            <div class="float-sm-end">
+                <button class="btn btn-primary" *ngIf="cart.length" routerLink="/checkout/direction">
+                    Next step
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<ng-template #noitem>
+    <div style="padding-top: 200px; width:200px ; display:flex; margin: 0 auto; align-self: center; flex-direction: column; align-items: center;">
+        <h4>no items in cart</h4>
+        <button class="btn btn-primary" routerLink="/products">back to products</button>
+    </div>
+</ng-template>
