@@ -1,13 +1,14 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/interfaces/Product';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  selector: 'app-card-products',
+  templateUrl: './card-products.component.html',
+  styleUrls: ['./card-products.component.scss']
 })
-export class CardComponent {
+export class CardProductsComponent {
+
   @Input() dataCard!: Product
   @Output() onAddCard = new EventEmitter<Product>()
   @Output() onRemoveCard = new EventEmitter<string>()

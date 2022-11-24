@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
     private route:Router) { }
 
   isInCheckoutPath(){
-    return this.route.url === "/checkout"
+    return this.route.url.substring(0,9) === "/checkout"
   }
   
   ngOnInit(): void {
