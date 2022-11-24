@@ -11,19 +11,20 @@ export class ProductsService {
   constructor(private http: HttpClient) {
     this.getProducts().subscribe()
   }
-  private _products: Product[] = []
+  private _products!: ProductResponse
 
 
-  getProducts(): Observable<ProductResponse> {
-    return this.http.get<ProductResponse>(`${this.base_url}/products`)
+  getProducts(page:number=1): Observable<ProductResponse> {
+    return this.http.get<ProductResponse>(`${this.base_url}/products?page=${page}`)
       .pipe(
         tap(resp => {
           if (resp.ok) {
-            this._products = resp.data
+            this._products = resp
           }
         })
       )
   }
 
-  get products() { return [...this._products] }
+
+  get products(): ProductResponse { return { ...this._products } }
 }
