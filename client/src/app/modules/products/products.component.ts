@@ -21,8 +21,12 @@ export class ProductsComponent implements OnInit {
   sendProductToShoppingCart(product: Product) {
     this.shoppingCartService.addProduct(product)
   }
-
+  deleteProductinShoppingCart(id: string) {
+    this.shoppingCartService.deleteProduct(id)
+  }
   ngOnInit(): void {
   }
-
+  verdata(){
+    console.log(this.products)
+  }
 }

@@ -15,7 +15,7 @@ export class ProductsService {
 
 
   getProducts(): Observable<ProductResponse> {
-    return this.http.get<ProductResponse>(this.base_url)
+    return this.http.get<ProductResponse>(`${this.base_url}/products`)
       .pipe(
         tap(resp => {
           if (resp.ok) {
