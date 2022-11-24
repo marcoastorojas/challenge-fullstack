@@ -3,6 +3,7 @@ const morgan = require("morgan")
 const cors = require("cors")
 const productRouter = require("../routes/products.routes")
 const connectionMongo = require("../config/db")
+require("dotenv").config()
 // const path = require("path")
 
 class Server {
