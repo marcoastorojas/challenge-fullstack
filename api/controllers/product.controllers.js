@@ -3,8 +3,8 @@ const { request, response } = require("express")
 const Product = require("../models/Product")
 const getProducts = async (req = request, res = response) => {
     try {
-        const all = await Product.find()
-        res.status(200).json({ all })
+        const data = await Product.find()
+        res.status(200).json({ ok: true, data, prevPage: null, nextPage: null })
     } catch (error) {
         res.status(500).json({ error: error.message })
     }
