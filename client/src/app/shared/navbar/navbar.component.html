@@ -1,0 +1,43 @@
+<header class="p-3 text-bg-dark">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap" />
+                </svg>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" routerLinkActive="text-white" routerLink="/products" class="nav-link px-2 text-secondary">Products</a></li>
+                <li><a href="#" routerLinkActive="text-white" routerLink="/checkout" class="nav-link px-2 text-secondary">Checkout</a></li>
+            </ul>
+
+            <div class="text-end" *ngIf="!isInCheckoutPath()">
+                <div class="flex-shrink-0 dropdown">
+                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <button type="button" class="btn btn-warning">Shopping-cart <a class="text-muted dropdown-toggle font-size-16"  href="#" role="button"
+                            aria-haspopup="true"><i class="bx bx-dots-horizontal-rounded"></i></a></button>
+                    </a>
+                    <ul class="dropdown-menu text-large shadow" style="width: 200px;" >
+                            <table *ngIf="cart.length;else noitems">
+                                <tr>
+                                    <th>name</th>
+                                    <th>price</th>
+                                </tr>
+                                <tr  *ngFor="let product of cart">
+                                    <td>{{product.name}}</td>
+                                    <td>{{product.price | currency:"S/"}}</td>
+                                </tr>
+                            </table>
+                            <ng-template #noitems>
+                                <p style="text-align: center;">No items in Cart</p>
+                            </ng-template>
+                            <li class="d-flex justify-content-center"><button type="button"
+                                    class="btn btn-warning">Check-out</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
