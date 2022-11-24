@@ -6,8 +6,11 @@ export interface Product {
 }
 
 export interface ProductResponse {
-    ok: boolean;
-    data: Product[];
-    prevPage?: string;
-    nextPage?: string;
+    ok:boolean;
+    allEntries:number;
+    totalPages:number;
+    data:Product[];
+    currentPage:number;
+    prevPage:number|null;
+    nextPage:number|null;
 }
