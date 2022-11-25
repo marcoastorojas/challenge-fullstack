@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Country, State } from 'src/app/interfaces/Directions';
+import { FormControl, FormGroup,FormBuilder } from '@angular/forms';
+import { Country, State, UserDirection } from 'src/app/interfaces/Directions';
 import { DirectionService } from './services/direction.service';
+import { UserDirectionService } from './services/user-direction.service';
 
 
 @Component({
@@ -8,38 +10,17 @@ import { DirectionService } from './services/direction.service';
   templateUrl: './direction.component.html',
   styleUrls: ['./direction.component.scss']
 })
-export class DirectionComponent implements OnInit {
+export class DirectionComponent{
+  constructor(
+    private directionService: DirectionService, 
+    private fb:FormBuilder,
+    private userDirectionService:UserDirectionService) { }
 
-  constructor(private directionService: DirectionService) { }
-  currentCountry = ""
-  currentState = ""
   get countries(): Country[] {
     return this.directionService.countries
   }
-  get states(): State[] {
-    return this.directionService.states
-  }
-  get cities(): any {
-    return this.directionService.cities
-  }
 
-  getStatesFromName(nameCountry: string) {
-    if(!nameCountry)return
-    this.directionService.getStatesFromCountry(nameCountry)
-      .subscribe(console.log)
+  changeUserDirection(userDirection:UserDirection){
+    this.userDirectionService.setUserDirection(userDirection)
   }
-
-  getCitiesFromName(nameState: string) {
-    if(!nameState)return
-    this.directionService.getCitiesFromState(nameState)
-      .subscribe()
-  }
-
-  getalgo(data:any){
-    console.log(data)
-  }
-  ngOnInit(): void {
-  }
-
-
 }

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
+import { UserDirection } from 'src/app/interfaces/Directions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserDirectionService {
-  userDirection: any
+  userDirection!: UserDirection
   constructor() { }
-  setUserDirection(userDirection: any) {
-    this.setUserDirection = userDirection
+  setUserDirection(userDirection: UserDirection) {
+    this.userDirection = userDirection
   }
 }

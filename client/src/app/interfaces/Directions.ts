@@ -5,5 +5,13 @@ export interface Country {
 }
 
 export interface State {
-    state_name:string
+    state_name: string
+}
+
+export interface UserDirection {
+    address1: string
+    address2: string
+    city: string
+    country: string
+    state: string
 }
