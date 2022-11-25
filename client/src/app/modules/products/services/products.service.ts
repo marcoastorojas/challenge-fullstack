@@ -7,7 +7,7 @@ import { Product, ProductResponse } from 'src/app/interfaces/Product';
   providedIn: 'root'
 })
 export class ProductsService {
-  base_url: string = "http://localhost:3000"
+  base_url: string = "https://challenge-fullstack.tk/api"
   constructor(private http: HttpClient) {
     this.getProducts().subscribe()
   }

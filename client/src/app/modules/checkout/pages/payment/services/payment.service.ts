@@ -9,7 +9,7 @@ import { UserDirectionService } from '../../direction/services/user-direction.se
   providedIn: 'root'
 })
 export class PaymentService {
-  baseUrl = "http://localhost:3000"
+  baseUrl = "https://challenge-fullstack.tk/api"
   constructor(
     private userDirectionService: UserDirectionService,
     private shoppingCartService: ShoppingCartService,

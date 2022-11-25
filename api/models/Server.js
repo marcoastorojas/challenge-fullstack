@@ -3,8 +3,9 @@ const morgan = require("morgan")
 const cors = require("cors")
 const productRouter = require("../routes/products.routes")
 const connectionMongo = require("../config/db")
+const orderRouter = require("../routes/order.routes")
 require("dotenv").config()
-// const path = require("path")
+const path = require("path")
 
 class Server {
     constructor() {
@@ -24,17 +25,18 @@ class Server {
         }
     }
     middlewares() {
-        //     this.app.use(express.static("public"))
+        this.app.use(express.static("public"))
         this.app.use(express.json())
         this.app.use(morgan('dev'));
         this.app.use(cors())
         this.routes()
-        //     this.app.get("*", (req, res) => {
-        //         res.sendFile(path.resolve(__dirname, "../public/index.html"))
-        //     })
+        this.app.get("*", (req, res) => {
+            res.sendFile(path.resolve(__dirname, "../public/index.html"))
+        })
     }
     routes() {
-        this.app.use("/products", productRouter)
+        this.app.use("/api/products", productRouter)
+        this.app.use("/api/order", orderRouter)
     }
 
 }
