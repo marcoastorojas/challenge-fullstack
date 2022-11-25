@@ -30,7 +30,7 @@ export class FormDirectionComponent implements OnInit, OnDestroy {
   getStatesFromName(nameCountry: string) {
     if (!nameCountry) return
     this.directionService.getStatesFromCountry(nameCountry)
-      .subscribe(console.log)
+      .subscribe()
   }
   getCitiesFromName(nameState: string) {
     if (!nameState) return
@@ -40,7 +40,6 @@ export class FormDirectionComponent implements OnInit, OnDestroy {
 
   sendForm() {
     if (this.formDirection.invalid) return
-    console.log(this.formDirection.value)
     this.formComplete.emit(this.formDirection.value)
   }
 

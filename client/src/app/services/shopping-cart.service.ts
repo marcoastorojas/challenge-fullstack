@@ -14,7 +14,9 @@ export class ShoppingCartService {
     this._cart = this._cart.filter(product => product._id !== id)
   }
   
-
+  resetCart(){
+    this._cart = []
+  }
   get cart() {
     return [...this._cart]
   }

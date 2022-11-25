@@ -13,7 +13,7 @@ export class DirectionService {
   private base_url = "https://www.universal-tutorial.com/api"
   private token: string = ""
   constructor(private http: HttpClient) {
-    this.getCountries().subscribe(data => { console.log(data)})
+    this.getCountries().subscribe()
   }
 
   getCountries(): Observable<Country[]> {
@@ -41,7 +41,6 @@ export class DirectionService {
       headers: { "Authorization": this.token }
     })
       .pipe(tap(states => {
-        console.log(states)
         this.states = states
       }))
   }

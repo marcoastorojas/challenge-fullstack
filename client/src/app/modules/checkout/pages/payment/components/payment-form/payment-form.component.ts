@@ -24,5 +24,6 @@ export class PaymentFormComponent implements OnInit {
   sendPayment(){
     if(this.FormPayment.invalid)return
     this.onPaymentReady.emit(this.FormPayment.value)
+    this.FormPayment.reset()
   }
 }

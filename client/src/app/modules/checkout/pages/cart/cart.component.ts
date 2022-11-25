@@ -14,9 +14,7 @@ export class CartComponent implements OnInit {
     return this.shoppingCartService.cart
   }
 
-  verdata(){
-    console.log(this.cart)
-  }
+
   ngOnInit(): void {
   }
   deleteProductinShoppingCart(id:string){

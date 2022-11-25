@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { UserPayment } from 'src/app/interfaces/Payment';
@@ -11,16 +12,16 @@ export class PaymentService {
   baseUrl = "http://localhost:3000"
   constructor(
     private userDirectionService: UserDirectionService,
-    private shoppingCartService: ShoppingCartService
+    private shoppingCartService: ShoppingCartService,
+    private http:HttpClient
   ) { }
-  userPayment!: UserPayment
   enviarPedido(userPayment: UserPayment) {
-    console.log({
-      userPayment,
-      userDirection: this.userDirectionService.userDirection,
-      products: this.shoppingCartService.cart
+    return this.http.post(`${this.baseUrl}/order`,{
+      payment:userPayment,
+      direction:this.userDirectionService.userDirection,
+      products:this.shoppingCartService.cart
     })
-    return of("todo correcto")
+    this.shoppingCartService.resetCart()
   }
 
 }

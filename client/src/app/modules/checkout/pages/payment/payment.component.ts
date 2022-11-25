@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserPayment } from 'src/app/interfaces/Payment';
 import { PaymentService } from './services/payment.service';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -15,6 +15,16 @@ export class PaymentComponent implements OnInit {
   }
   sendUserPayment(user:UserPayment){
     this.paymentService.enviarPedido(user)
-      .subscribe(console.log)
+      .subscribe((data:any)=>{
+        if (data.ok) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Order Created',
+            showConfirmButton: false,
+            timer: 1000
+          })
+        }
+      })
   }
 }
