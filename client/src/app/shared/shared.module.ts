@@ -4,13 +4,15 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
 import { CardProductsComponent } from './card-products/card-products.component';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    CardProductsComponent
+    CardProductsComponent,
+    BreadcrumbsComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { CardProductsComponent } from './card-products/card-products.component';
   ],
   exports:[
     NavbarComponent,
-    CardProductsComponent
+    CardProductsComponent,
+    BreadcrumbsComponent
   ]
 })
 export class SharedModule { }
