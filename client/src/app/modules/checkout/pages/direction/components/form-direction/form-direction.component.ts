@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Country, State, UserDirection } from 'src/app/interfaces/Directions';
 import { DirectionService } from '../../services/direction.service';
@@ -12,7 +13,11 @@ import { DirectionService } from '../../services/direction.service';
 export class FormDirectionComponent implements OnInit, OnDestroy {
   @Input('countries') countries: Country[] = [];
   @Output('onFormCompleted') formComplete = new EventEmitter<UserDirection>()
-  constructor(private directionService: DirectionService, private fb: FormBuilder) { }
+  constructor(
+    private directionService: DirectionService, 
+    private fb: FormBuilder,
+    private router:Router) { }
+
   formDirection: FormGroup = this.fb.group({
     country: ["", [Validators.required, Validators.minLength(1)]],
     state: ["", [Validators.required, Validators.minLength(1)]],
@@ -55,5 +60,10 @@ export class FormDirectionComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.changeCountry.unsubscribe()
     this.changeState.unsubscribe()
+  }
+  navigteToPayment(){
+    setTimeout(() => {
+      this.router.navigate(["/checkout/payment"])
+    }, 200);
   }
 }
