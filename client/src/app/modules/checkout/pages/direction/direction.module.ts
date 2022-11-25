@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { DirectionRoutingModule } from './direction-routing.module';
 import { DirectionComponent } from './direction.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -11,7 +13,8 @@ import { DirectionComponent } from './direction.component';
   ],
   imports: [
     CommonModule,
-    DirectionRoutingModule
+    DirectionRoutingModule,
+    FormsModule
   ]
 })
 export class DirectionModule { }
